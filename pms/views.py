@@ -2,7 +2,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
-from pms.forms import SignUpForm
+from pms.forms import SignUpForm, ProductForm
+from pms.models import Product
 
 
 def index(request):
@@ -43,3 +44,24 @@ def signup(request):
         else:
             return render(request, 'pms/signup.html', context={'errors': signup_form.errors})
     return render(request, 'pms/signup.html')
+
+
+def products(request):
+    if request.user.is_authenticated:
+        return render(request, 'pms/products.html', {'products': Product.objects.all()})
+    else:
+        return redirect('login')
+
+
+def add_drug(request):
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            product_form = ProductForm(request.POST)
+            if product_form.is_valid():
+                product_form.save()
+                # TODO add a flush message in login form
+                return redirect('products')
+        product_form = ProductForm()
+        return render(request, 'pms/add_drug.html', {'form': product_form})
+    else:
+        return redirect('login')
