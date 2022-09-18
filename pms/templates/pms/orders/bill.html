@@ -11,9 +11,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
             crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
+    .stock {padding: 10px; border-radius: 5px;}
+    .stock-available {background: #198754; color: white; font-style: bold;}
+    .stock-not-available {background: #dc3545; color: white; font-style: bold;}
+    .actions {
+    display: flex;
+    }
+    .actions > * {
+        margin-right: 10px;
+    }
         body {
   font-size: .875rem;
 }
@@ -121,6 +129,13 @@
 
 
 
+
+
+
+
+
+
+
     </style>
 </head>
 
@@ -147,84 +162,43 @@
 
 
 <div class="container-fluid">
-    <div class="row">
+    <div class="row" style="margin-left: 205px;">
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
             <div class="position-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'homepage' %}">
                             <span data-feather="home"></span>
-                            Dashboard
+                            My Orders
+                        </a>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file"></span>
-                            Orders
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'drugs' %}">
+                        <a class="nav-link" href="{% url 'drugs_list' %}">
                             <span data-feather="shopping-cart"></span>
-                            Drugs
+                            Order Drugs
                         </a>
                     </li>
+
                 </ul>
             </div>
         </nav>
 
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Dashboard</h1>
-            </div>
+        <h3>Order Bill</h3>
+        <h4>Your Name: {{name}}</h4>
+        <h4>Order ID: {{order_id}}</h4>
+        <h4>Drug ID: {{drug_id}}</h4>
+        <h4>Drug Name: {{drug_name}}</h4>
+        <h4>Unit Price: {{unit_price}} BDT</h4>
+        <h4>Quantity: {{quantity}}</h4>
+        <br/>
+        <br/>
+        <h4>*Total Price*: {{total_price}} BDT</h4>
 
-            <h2>Order List</h2>
-            <div class="sales-chart">
-                <canvas id="myChart"></canvas>
-            </div>
-        </main>
+
     </div>
 </div>
-
-<script>
-  const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-  ];
-
-  const data = {
-    labels: labels,
-    datasets: [{
-      label: 'Sales of the month',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: [0, 10, 5, 2, 20, 30, 45],
-    }]
-  };
-
-  const config = {
-    type: 'line',
-    data: data,
-    options: {}
-  };
-
-   const myChart = new Chart(
-    document.getElementById('myChart'),
-    config
-  );
-
-</script>
-
 </body>
 
 </html>
+

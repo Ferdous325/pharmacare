@@ -131,7 +131,7 @@
 <div class="navbar" style="display: inline;">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid d-flex">
-            <a class="navbar-brand" href="{% url 'homepage' %}">Phramacare</a>
+            <a class="navbar-brand" href="{% url 'homepage' %}">Pharmacare</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -167,30 +167,25 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'products' %}">
+                        <a class="nav-link" href="{% url 'drugs' %}">
                             <span data-feather="shopping-cart"></span>
-                            Products
+                            Drugs
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="users"></span>
-                            Doctors
-                        </a>
-                    </li>
+
                 </ul>
             </div>
         </nav>
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Add Product</h1>
+                <h1 class="h2">Add Drug</h1>
             </div>
-            <form method="post" action="{% url 'add_drug' %}">
+            <form role="form" method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <div class="mb-3">
-                    <input class="btn btn-primary" type="submit" value="Add"/>
+                    <input class="btn btn-primary" type="submit" value="Update"/>
                 </div>
             </form>
         </main>
