@@ -12,6 +12,8 @@
             integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
             crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+    </script>
 
     <style>
         body {
@@ -121,6 +123,12 @@
 
 
 
+
+
+
+
+
+
     </style>
 </head>
 
@@ -186,42 +194,80 @@
     </div>
 </div>
 
-<script>
-  const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-  ];
+ <button type="button" class="btn btn-primary" id="liveToastBtn" style="display:none;">Show live toast</button>
 
-  const data = {
-    labels: labels,
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <strong class="me-auto">Notifications</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body" id="msg-body">
+                </div>
+            </div>
+        </div>
+
+<script>
+
+
+  $.ajax({url: 'has-notification', success: function(result){
+    if(result.notification === true) {
+    const toastLiveExample = document.getElementById('liveToast')
+    document.getElementById('msg-body').innerHTML = result.msg
+    const toast = new bootstrap.Toast(toastLiveExample)
+    toast.show()
+    }
+  }});
+
+
+</script>
+
+<script>
+  $.ajax({url: 'sales-data', success: function(result){
+    console.log(result)
+   const data = {
+    labels: result.total_drugs,
     datasets: [{
+      yAxisID: 'Total Sold',
       label: 'Sales of the month',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
-      data: [0, 10, 5, 2, 20, 30, 45],
+      data: result.total_orders,
     }]
   };
 
   const config = {
-    type: 'line',
+    type: 'bar',
     data: data,
-    options: {}
+    beginAtZero: true,
+   options: {
+        scales: {
+            y: [{
+                ticks: {
+                    precisions: 0
+                },
+                title: {
+                    display: true,
+                    text: 'Total Sold'
+                  }
+            }]
+        }
+    }
+
   };
 
    const myChart = new Chart(
     document.getElementById('myChart'),
     config
   );
+
+  }});
+
+
+
+
+
+
 
 </script>
 

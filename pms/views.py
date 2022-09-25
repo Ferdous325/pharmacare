@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login, logout
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 
@@ -9,7 +10,11 @@ from pms.models import Drug, Order
 def index(request):
     if request.user.is_authenticated:
         if request.user.is_superuser:
-            return render(request, 'pms/index.html')
+            total_drugs = Drug.objects.all().order_by('id')
+            total_orders_of_each_drug = [Order.objects.filter(drugs=drug).order_by('id').count() for drug in
+                                         total_drugs]
+            return render(request, 'pms/index.html',
+                          {'total_drugs': total_drugs, 'total_orders': total_orders_of_each_drug})
         else:
             return render(request, 'pms/orders/my-orders.html',
                           {'orders': Order.objects.filter(buyer_id=request.user.id)})
@@ -68,7 +73,7 @@ def search_drug(request):
         searched_drugs = Drug.objects.filter(name__icontains=request.GET['search'])
     else:
         searched_drugs = Drug.objects.all()
-    return render(request, 'pms/drugs/drug-list.html', {'drugs': searched_drugs})
+    return render(request, 'pms/drugs/drug-list.html', {'drugs': searched_drugs, 'admin': request.user.is_superuser})
 
 
 def show_drug(request, drug_id):
@@ -153,3 +158,23 @@ def order_bill(request, order_id):
 
     else:
         return redirect('login')
+
+
+def sales_data(request):
+    total_drugs = Drug.objects.all().order_by('id')
+    total_orders_of_each_drug = [Order.objects.filter(drugs=drug).order_by('id').count() for drug in total_drugs]
+    return JsonResponse(
+        {"total_drugs": [f'{drug.id} {drug.name}' for drug in total_drugs], "total_orders": total_orders_of_each_drug})
+
+
+def has_notification(request):
+    if request.user.is_superuser:
+        all_drugs = Drug.objects.all()
+        for drug in all_drugs:
+            if drug.is_expired():
+                return JsonResponse({"notification": True, "msg": "Update the expired drugs!"})
+            if drug.stock < 1:
+                return JsonResponse({"notification": True, "msg": "Update the stock of the drugs!"})
+        return JsonResponse({"notification": False})
+    else:
+        pass
