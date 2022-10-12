@@ -129,8 +129,15 @@ def place_order(request, drug_id):
         if request.method == 'POST':
             form = OrderForm(request.POST)
             if form.is_valid():
-                form.save()
-                return redirect('homepage')
+                drug = get_object_or_404(Drug, id=drug_id)
+                if form.cleaned_data['quantity'] <= drug.stock:
+                    drug.stock = drug.stock - form.cleaned_data['quantity']
+                    drug.save()
+                    form.save()
+                    return redirect('homepage')
+                else:
+                    form.add_error('quantity', f'Failed to order! Stock is only {drug.stock}')
+                    return render(request, 'pms/drugs/place_order.html', {'form': form})
             else:
                 return render(request, 'pms/drugs/place_order.html', {'form': form})
         form = OrderForm(

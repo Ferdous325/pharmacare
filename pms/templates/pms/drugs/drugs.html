@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +14,12 @@
             crossorigin="anonymous"></script>
 
     <style>
+
+    a.nav-link {
+
+        color: white;
+        font-weight: bold;
+    }
         body {
   font-size: .875rem;
 }
@@ -92,8 +99,7 @@
   padding-top: .75rem;
   padding-bottom: .75rem;
   font-size: 1rem;
-  background-color: rgba(0, 0, 0, .25);
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+
 }
 
 .navbar .navbar-toggler {
@@ -154,12 +160,12 @@
                             Dashboard
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file"></span>
-                            Orders
-                        </a>
-                    </li>
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" href="#">-->
+<!--                            <span data-feather="file"></span>-->
+<!--                            Orders-->
+<!--                        </a>-->
+<!--                    </li>-->
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'drugs' %}">
                             <span data-feather="shopping-cart"></span>
@@ -177,8 +183,8 @@
             </div>
             <div class="d-flex">
                 <div class="card" style="width: 18rem;">
-                    <img src="https://d2jx2rerrg6sh3.cloudfront.net/image-handler/ts/20210121091000/ri/673/picture/2021/1/shutterstock_544348294.jpg"
-                         class="card-img-top" alt="..." width="380" height="200">
+                    <img src="{% static 'pms/drug1.jpg' %}" class="card-img-top" alt="..." width="380" height="200">
+
                     <div class="card-body">
                         <h5 class="card-title">Add Drug</h5>
                         <a href="{% url 'add_drug' %}" class="btn btn-primary">Click to add</a>
@@ -186,8 +192,7 @@
                 </div>
 
                 <div class="card" style="width: 18rem;">
-                    <img src="https://d2jx2rerrg6sh3.cloudfront.net/image-handler/ts/20210121091000/ri/673/picture/2021/1/shutterstock_544348294.jpg"
-                         class="card-img-top" alt="..." width="380" height="200">
+                    <img src="{% static 'pms/drug2.jpg' %}" class="card-img-top" alt="..." width="380" height="200">
                     <div class="card-body">
                         <h5 class="card-title">Drug List</h5>
                         <a href="{% url 'drugs_list' %}" class="btn btn-primary">View all drugs</a>

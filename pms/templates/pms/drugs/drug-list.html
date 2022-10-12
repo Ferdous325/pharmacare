@@ -167,12 +167,12 @@
                             Dashboard
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file"></span>
-                            Orders
-                        </a>
-                    </li>
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" href="#">-->
+<!--                            <span data-feather="file"></span>-->
+<!--                            Orders-->
+<!--                        </a>-->
+<!--                    </li>-->
                     <li class="nav-item">
                         <a class="nav-link active" href="{% url 'drugs' %}">
                             <span data-feather="shopping-cart"></span>
@@ -198,6 +198,7 @@
                 </ul>
             </div>
         </nav>
+        <div class="main" style="margin-left: 40px;">
         <h2>All Drugs</h2>
 
         <form action="{% url 'search_drug' %}" method="get">
@@ -272,6 +273,7 @@
                 </tbody>
             </table>
         </div>
+            </div>
     </div>
 </div>
 
