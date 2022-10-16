@@ -49,10 +49,9 @@ def signup(request):
         signup_form = SignUpForm(request.POST)
         if signup_form.is_valid():
             signup_form.save()
-            # TODO add a flush message in login form
             return redirect('login')
         else:
-            return render(request, 'pms/signup.html', context={'errors': signup_form.errors})
+            return render(request, 'pms/signup.html', context={'form': signup_form})
     return render(request, 'pms/signup.html')
 
 
