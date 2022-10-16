@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate, login, logout
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 from django.utils import timezone
 
 from pms.forms import SignUpForm, DrugForm, OrderForm
@@ -124,6 +125,29 @@ def orders(request):
         return render(request, 'pms/orders/my-orders.html', {'orders': Order.objects.filter(buyer_id=request.user.id)})
 
 
+def confirm_order(request):
+    form = OrderForm(request.POST)
+    if form.is_valid():
+        drug = form.cleaned_data['drugs'].first()
+        quantity = form.cleaned_data['quantity']
+        if quantity <= drug.stock:
+            drug.stock = drug.stock - quantity
+            drug.save()
+            form.save()
+            messages.add_message(request, messages.SUCCESS, 'You order is confirmed.')
+            return redirect('homepage')
+        else:
+            form.add_error('quantity', f'Failed to order! Stock is only {drug.stock}')
+            return render(request, 'pms/drugs/place_order.html', {'form': form})
+
+
+def make_payment(request, drug, order_form):
+    if request.method == 'POST':
+        quantity = order_form.cleaned_data['quantity']
+        return render(request, 'pms/orders/make_payment.html',
+                      {'drug': drug, 'form': order_form, 'quantity': quantity, 'total_price': quantity * drug.price})
+
+
 def place_order(request, drug_id):
     if request.user.is_authenticated:
         if request.method == 'POST':
@@ -131,10 +155,8 @@ def place_order(request, drug_id):
             if form.is_valid():
                 drug = get_object_or_404(Drug, id=drug_id)
                 if form.cleaned_data['quantity'] <= drug.stock:
-                    drug.stock = drug.stock - form.cleaned_data['quantity']
-                    drug.save()
-                    form.save()
-                    return redirect('homepage')
+                    # TODO make payment
+                    return make_payment(request, drug, form)
                 else:
                     form.add_error('quantity', f'Failed to order! Stock is only {drug.stock}')
                     return render(request, 'pms/drugs/place_order.html', {'form': form})
@@ -177,11 +199,13 @@ def sales_data(request):
 def has_notification(request):
     if request.user.is_superuser:
         all_drugs = Drug.objects.all()
+        expired = False
+        stock_out = False
         for drug in all_drugs:
-            if drug.is_expired():
-                return JsonResponse({"notification": True, "msg": "Update the expired drugs!"})
-            if drug.stock < 1:
-                return JsonResponse({"notification": True, "msg": "Update the stock of the drugs!"})
-        return JsonResponse({"notification": False})
+            if drug.is_expired() and not expired:
+                expired = True
+            if drug.stock < 1 and not stock_out:
+                stock_out = True
+        return JsonResponse({'expired': expired, 'stock_out': stock_out})
     else:
         pass

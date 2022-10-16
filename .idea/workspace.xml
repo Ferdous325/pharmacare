@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ebaf5585-46c1-48c7-bb44-07597fbeda58" name="Changes" comment="Add gitignore">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/pharmacare.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pharmacare.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pms/templates/pms/drugs/add_drug.html" beforeDir="false" afterPath="$PROJECT_DIR$/pms/templates/pms/drugs/add_drug.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pms/templates/pms/drugs/drug-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/pms/templates/pms/drugs/drug-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pms/templates/pms/drugs/place_order.html" beforeDir="false" afterPath="$PROJECT_DIR$/pms/templates/pms/drugs/place_order.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pms/templates/pms/drugs/update.html" beforeDir="false" afterPath="$PROJECT_DIR$/pms/templates/pms/drugs/update.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pms/templates/pms/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pms/templates/pms/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pms/templates/pms/orders/bill.html" beforeDir="false" afterPath="$PROJECT_DIR$/pms/templates/pms/orders/bill.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pms/templates/pms/orders/my-orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/pms/templates/pms/orders/my-orders.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pms/templates/pms/orders/orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/pms/templates/pms/orders/orders.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pms/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/pms/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pms/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/pms/views.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2E9py6VRSO3UqEcHJtmclAcZEpV" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/aditt/Workspace/projects/pharmacare/manage.py&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\aditt\Workspace\projects\pharmacare\pms\templates\pms\drugs" />
+      <recent name="C:\Users\aditt\Workspace\projects\pharmacare\pms\templates\pms\orders" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Run Server" type="PythonConfigurationType" factoryName="Python">
+      <module name="pharmacare" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\aditt\Workspace\projects\env\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
+      <option name="PARAMETERS" value="runserver" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ebaf5585-46c1-48c7-bb44-07597fbeda58" name="Changes" comment="" />
+      <created>1662017907623</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1662017907623</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Add user authentication">
+      <created>1662240938032</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1662240938032</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add dashboard page and product page with new product feature">
+      <created>1662921813260</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1662921813260</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add feature to place user order, order list">
+      <created>1663528657726</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1663528657726</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Add notification for admin and chart">
+      <created>1664130019321</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1664130019321</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add gitignore">
+      <created>1665829093462</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1665829093462</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add user authentication" />
+    <MESSAGE value="Add dashboard page and product page with new product feature" />
+    <MESSAGE value="Add feature to place user order, order list" />
+    <MESSAGE value="Add notification for admin and chart" />
+    <MESSAGE value="Add gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add gitignore" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

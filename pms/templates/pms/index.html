@@ -193,15 +193,22 @@
     </div>
 </div>
 
- <button type="button" class="btn btn-primary" id="liveToastBtn" style="display:none;">Show live toast</button>
 
         <div class="toast-container position-fixed bottom-0 end-0 p-3">
-            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div id="stockOut" class="toast" style="background-color: 'red'; background: red; color: white;" role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header">
                     <strong class="me-auto">Notifications</strong>
                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
-                <div class="toast-body" id="msg-body">
+                <div class="toast-body" id="stockOut-msg">
+                </div>
+            </div>
+            <div id="expired" class="toast" style="background-color: 'red'; background: red; color: white;" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <strong class="me-auto">Notifications</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body" id="expired-msg">
                 </div>
             </div>
         </div>
@@ -210,9 +217,17 @@
 
 
   $.ajax({url: 'has-notification', success: function(result){
-    if(result.notification === true) {
-    const toastLiveExample = document.getElementById('liveToast')
-    document.getElementById('msg-body').innerHTML = result.msg
+    console.log('has notificaiton', result)
+    if(result.expired === true) {
+    const toastLiveExample = document.getElementById('expired')
+    document.getElementById('expired-msg').innerHTML = 'Update the expired drugs!'
+    const toast = new bootstrap.Toast(toastLiveExample)
+    toast.show()
+    }
+
+    if(result.stock_out === true) {
+    const toastLiveExample = document.getElementById('stockOut')
+    document.getElementById('stockOut-msg').innerHTML = 'Update the stock of the drugs!'
     const toast = new bootstrap.Toast(toastLiveExample)
     toast.show()
     }
