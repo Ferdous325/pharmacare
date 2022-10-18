@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.core.validators import validate_email
 
 from pms.models import Drug, Order
 
@@ -12,6 +13,10 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'password1', 'password2',)
+
+    def clean_username(self):
+        email_username = self.cleaned_data.get('username')
+        validate_email(email_username)
 
 
 class DrugForm(forms.ModelForm):

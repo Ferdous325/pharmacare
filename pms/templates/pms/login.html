@@ -51,14 +51,34 @@
             <label for="email" class="form-label">Email address</label>
             <input type="email" name="username" class="form-control" id="email" aria-describedby="email">
         </div>
+        <p style="color: red; margin-left: 10px;" id="email-error"></p>
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
             <input type="password" name="password" class="form-control" id="password">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
     </form>
 </div>
-
+<script>
+    const inputText = document.getElementById('email')
+    const emailError = document.getElementById('email-error')
+    const submitBtn = document.getElementById('submitBtn')
+    inputText.addEventListener('keydown', (e) => validateEmail(e.target.value))
+    function validateEmail(value)
+    {
+        var mailformat = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+        if(value.match(mailformat)){
+            emailError.innerHTML = ''
+            submitBtn.disabled = false
+            return true;
+        }
+        else {
+          emailError.innerHTML = 'Invalid Email'
+          submitBtn.disabled = true
+          return false;
+        }
+}
+</script>
 </body>
 
 </html>
